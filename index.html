@@ -810,11 +810,14 @@
      Scene-Aware Control
     </h2>
     <p class="is-size-5 is-size-6-mobile has-text-centered" style="margin-bottom: 0.75rem;">
-     We highlight how a scene-aware controller adjusts its dynamics while staying physics-accurate through Viser. 
+     The scene-aware policy can exploit environment cues for even better adaptation, yet CRISP already benefits from accurate
+      reference motion and geometry, so it remains strong even without those cues. These comparisons show how both behave inside
+      the same simulation.
     </p>
     <p class="is-size-5 is-size-6-mobile has-text-centered" style="margin-bottom: 1.5rem;">
-     The policy network receives extra scene cues (rendered as red contact points) so it learns to react to obstacles and
-      affordances inside the simulation instead of from video alone.
+     The policy network receives extra scene cues rendered as 
+      <span style="color: #e74c3c; font-weight: 600;">red contact points</span> so it can react to obstacles and affordances
+      directly inside the simulation.
     </p>
     <div class="box has-text-centered" style="margin-bottom: 2rem;">
      <div class="buttons is-centered is-flex-wrap-wrap" id="policy-aware-dataset-buttons" style="gap: 0.5rem;">
