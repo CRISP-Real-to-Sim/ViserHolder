@@ -75,8 +75,19 @@
     margin-bottom: 40px;
   }
   .scene-block .columns {
-    flex-grow: 1;
-    align-items: center;
+   flex-grow: 1;
+   align-items: center;
+  }
+  #interactive-demo .box > h3,
+  #policy-aware .box > h3,
+  #interactive-comparison .box > h3 {
+    display: none;
+  }
+  #interactive-demo-dataset-buttons .button,
+  #policy-aware-dataset-buttons .button,
+  #interactive-comparison-dataset-buttons .button {
+    font-size: 1.5rem;
+    padding: 0.35rem 1.25rem;
   }
   </style>
 </head>
@@ -105,9 +116,6 @@
 <h1 class="subtitle is-1 publication-title is-size-3-mobile" style="font-size: 4rem;">
       Contact-guided Real2Sim from Monocular Video with Planar Scene Primitives
      </h1>
-<p class="title is-2 has-text-weight-semibold is-size-4-mobile" style="font-size: 3rem; margin-top: 1rem;">
-      Dynamic motion with physics powered by Viser
-     </p>
 <div class="column has-text-centered is-hidden-tablet">
 <div class="publication-links">
 <span class="link-block">
@@ -1617,16 +1625,16 @@
    ],
    'interactive-comparison': [
     {
-     id: 'wild',
-     label: 'In-the-Wild'
-    },
-    {
      id: 'emdb',
      label: 'EMDB'
     },
     {
      id: 'prox',
      label: 'PROX'
+    },
+    {
+     id: 'wild',
+     label: 'In-the-Wild'
     }
    ]
   };
