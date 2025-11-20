@@ -780,7 +780,7 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="23" data-dataset="wild">
 <div class="box">
-       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+<h3 class="title is-5 is-size-6-mobile has-text-centered">
         Sandbag 3
        </h3>
 <div class="columns is-variable is-3 is-multiline">
@@ -796,6 +796,29 @@
           Interactive (ours)
          </p>
 <iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/1118_sandbag_3_ours.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Interactive demo: Sandbag 3">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="column is-full interactive-demo-card" data-card-index="24" data-dataset="wild">
+<div class="box">
+<h3 class="title is-5 is-size-6-mobile has-text-centered">
+        Soraiii
+       </h3>
+<div class="columns is-variable is-3 is-multiline">
+<div class="column is-12-tablet is-half-desktop">
+<p class="has-text-centered has-text-weight-semibold is-size-6">
+          Input Video
+         </p>
+<video autoplay="" controls="" loop="" muted="" playsinline="" src="static/videos/video_results/soraiii.mp4" style="width: 100%; border-radius: 10px; background-color: #000;">
+</video>
+</div>
+<div class="column is-12-tablet is-half-desktop">
+<p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #1abc9c;">
+          Interactive (ours)
+         </p>
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/soraiii.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Interactive demo: Soraiii">
 </iframe>
 </div>
 </div>
@@ -1059,7 +1082,7 @@
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #1abc9c;">
           Standard CRISP
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/0921_Werkraum_ours.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Standard CRISP interactive demo: Werkraum">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/ Werkraum.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Standard CRISP interactive demo: Werkraum">
 </iframe>
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1575,33 +1598,6 @@
 </div>
 </div>
 </div>
-<div class="column is-full interactive-demo-card" data-card-index="24" data-dataset="wild">
-<div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Soraiii
-       </h3>
-<div class="columns is-variable is-3 is-multiline">
-<div class="column is-12-tablet is-half-desktop">
-<p class="has-text-centered has-text-weight-semibold is-size-6">
-          Input Video
-         </p>
-<div class="notification is-dark has-text-centered" style="min-height: 240px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-          Video coming soon
-         </div>
-</div>
-<div class="column is-12-tablet is-half-desktop">
-<p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #1abc9c;">
-          Interactive (ours)
-         </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/soraiii.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Interactive demo: Soraiii">
-</iframe>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
 <script>
   const DATASET_CONFIG = {
@@ -1627,16 +1623,16 @@
    ],
    'interactive-comparison': [
     {
+     id: 'wild',
+     label: 'In-the-Wild'
+    },
+    {
      id: 'emdb',
      label: 'EMDB'
     },
     {
      id: 'prox',
      label: 'PROX'
-    },
-    {
-     id: 'wild',
-     label: 'In-the-Wild'
     }
    ]
   };
@@ -1741,9 +1737,9 @@
       sequenceSelect.innerHTML = '';
       datasetCards.forEach((card, idx) => {
        const option = document.createElement('option');
-       const title = (card.querySelector('h3') || { textContent: `Entry ${idx + 1}` }).textContent.trim();
        option.value = String(idx + 1);
-       option.textContent = `Page ${idx + 1} – ${title}`;
+       const labelPrefix = datasetLabels[activeDataset] || activeDataset;
+       option.textContent = `${labelPrefix} ${idx + 1}`;
        sequenceSelect.appendChild(option);
       });
      }
