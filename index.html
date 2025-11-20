@@ -173,11 +173,11 @@
         Interactive Demos
        </a>
 </li>
-<li>
-<a href="#policy-aware">
-        Policy-Aware Control
+      <li>
+       <a href="#policy-aware">
+        Scene-Aware Control
        </a>
-</li>
+      </li>
 <li>
 <a href="#interactive-comparison">
         Interactive Comparisons
@@ -189,6 +189,9 @@
 </section>
 <section class="section is-small" id="interactive-demo">
 <div class="container is-max-desktop">
+<div class="notification is-info has-text-centered has-text-weight-semibold is-size-4 is-size-5-mobile" style="margin-bottom: 1rem;">
+  Dynamic motion with physics powered by Viser — equivalent to IssacGym simulation output.
+</div>
 <h2 class="title is-1 has-text-centered is-size-3-mobile">
      Interactive Demos
     </h2>
@@ -196,10 +199,10 @@
      Explore CRISP reconstructions directly in the browser alongside their input videos. Each demo embeds the GitHub-hosted
       Viser playback next to the monocular video, so you can relate the simulation to the source footage.
     </p>
-<div class="box has-text-centered" style="margin-bottom: 2rem;">
-<div class="buttons is-centered is-flex-wrap-wrap" id="interactive-demo-dataset-buttons" style="gap: 0.5rem;">
-</div>
-<p class="is-size-5 is-size-6-mobile">
+     <div class="box has-text-centered" style="margin-bottom: 2rem;">
+     <div class="buttons is-centered is-flex-wrap-wrap" id="interactive-demo-dataset-buttons" style="gap: 0.5rem;">
+     </div>
+     <p class="is-size-5 is-size-6-mobile">
       Page
       <span id="interactive-demo-page-number">
        1
@@ -208,14 +211,40 @@
       <span id="interactive-demo-total-pages">
        1
       </span>
-</p>
-<input class="slider is-fullwidth" id="interactive-demo-slider" max="1" min="1" step="1" style="margin-top: 0.5rem;" type="range" value="1"/>
-</div>
+     </p>
+     <div class="field is-grouped is-justify-content-center is-align-items-center" id="interactive-demo-page-controls" style="gap: 0.5rem;">
+      <div class="control">
+       <button class="button is-small is-light" id="interactive-demo-prev" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-left">
+         </i>
+        </span>
+       </button>
+      </div>
+      <div class="control">
+       <input class="input is-small" id="interactive-demo-page-input" min="1" placeholder="Page #" type="number"/>
+      </div>
+      <div class="control">
+       <div class="select is-small">
+        <select id="interactive-demo-sequence-select">
+        </select>
+       </div>
+      </div>
+      <div class="control">
+       <button class="button is-small is-light" id="interactive-demo-next" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-right">
+         </i>
+        </span>
+       </button>
+      </div>
+     </div>
+    </div>
 <div class="columns is-multiline is-variable is-4" id="interactive-demo-grid">
 <div class="column is-full interactive-demo-card" data-card-index="0" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 56 outdoor stairs up down
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        56 outdoor stairs up down
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -237,8 +266,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="1" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 58 outdoor parcours
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        58 outdoor parcours
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -260,8 +289,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="2" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 36 outdoor long walk
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        36 outdoor long walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -283,8 +312,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="3" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 09 outdoor walk
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        09 outdoor walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -306,8 +335,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="4" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 20 outdoor walk
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        20 outdoor walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -329,8 +358,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="5" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 24 outdoor long walk
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        24 outdoor long walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -352,8 +381,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="6" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 19 indoor walk off mvs
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        19 indoor walk off mvs
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -375,8 +404,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="7" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 27 indoor walk off mvs
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        27 indoor walk off mvs
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -398,8 +427,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="8" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 28 outdoor walk lunges
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        28 outdoor walk lunges
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -421,8 +450,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="9" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 35 indoor walk
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        35 indoor walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -444,8 +473,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="10" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 40 indoor walk big circle
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        40 indoor walk big circle
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -467,8 +496,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="11" data-dataset="emdb">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: 48 outdoor walk downhill
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        48 outdoor walk downhill
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -490,8 +519,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="12" data-dataset="prox">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: MPH11
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        MPH11
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -513,8 +542,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="13" data-dataset="prox">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: MPH16
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        MPH16
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -536,8 +565,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="14" data-dataset="prox">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: MPH8
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        MPH8
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -560,8 +589,8 @@
 
 <div class="column is-full interactive-demo-card" data-card-index="15" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR 5
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR 5
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -583,8 +612,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="16" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR c
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR c
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -606,8 +635,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="17" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR GRN 2
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR GRN 2
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -629,8 +658,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="18" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR g
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR g
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -652,8 +681,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="19" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR GRN 1
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR GRN 1
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -675,8 +704,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="20" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR GRN 8
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR GRN 8
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -698,8 +727,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="21" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: Yoga Ball 1
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        Yoga Ball 1
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -721,8 +750,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="22" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: PKR b
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        PKR b
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -744,8 +773,8 @@
 </div>
 <div class="column is-full interactive-demo-card" data-card-index="23" data-dataset="wild">
 <div class="box">
-<h3 class="title is-5 is-size-6-mobile has-text-centered">
-        Scene: Sandbag 3
+       <h3 class="title is-5 is-size-6-mobile has-text-centered">
+        Sandbag 3
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-half-desktop">
@@ -768,20 +797,24 @@
 </div>
 </div>
 </section>
-<section class="section is-small" id="policy-aware">
-<div class="container is-max-desktop">
-<h2 class="title is-1 has-text-centered is-size-3-mobile">
-     Policy-Aware Control
+  <section class="section is-small" id="policy-aware">
+   <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-3-mobile">
+     Scene-Aware Control
     </h2>
-<p class="is-size-5 is-size-6-mobile has-text-centered" style="margin-bottom: 1.5rem;">
-     We highlight how a policy-aware controller adjusts its dynamics while staying physics-accurate through Viser. Each case
-      contrasts the standard CRISP replay against the policy-aware rollout streamed from
+    <p class="is-size-5 is-size-6-mobile has-text-centered" style="margin-bottom: 0.75rem;">
+     We highlight how a scene-aware controller adjusts its dynamics while staying physics-accurate through Viser. Each case
+      contrasts the standard CRISP replay against the scene-aware rollout streamed from
       <code>recordings/post_asset_ours_11160910</code>.
     </p>
-<div class="box has-text-centered" style="margin-bottom: 2rem;">
-<div class="buttons is-centered is-flex-wrap-wrap" id="policy-aware-dataset-buttons" style="gap: 0.5rem;">
-</div>
-<p class="is-size-5 is-size-6-mobile">
+    <p class="is-size-5 is-size-6-mobile has-text-centered" style="margin-bottom: 1.5rem;">
+     The policy network receives extra scene cues (rendered as red contact points) so it learns to react to obstacles and
+      affordances directly inside the simulation instead of from video alone.
+    </p>
+    <div class="box has-text-centered" style="margin-bottom: 2rem;">
+     <div class="buttons is-centered is-flex-wrap-wrap" id="policy-aware-dataset-buttons" style="gap: 0.5rem;">
+     </div>
+     <p class="is-size-5 is-size-6-mobile">
       Page
       <span id="policy-aware-page-number">
        1
@@ -790,14 +823,40 @@
       <span id="policy-aware-total-pages">
        1
       </span>
-</p>
-<input class="slider is-fullwidth" id="policy-aware-slider" max="1" min="1" step="1" style="margin-top: 0.5rem;" type="range" value="1"/>
-</div>
+     </p>
+     <div class="field is-grouped is-justify-content-center is-align-items-center" id="policy-aware-page-controls" style="gap: 0.5rem;">
+      <div class="control">
+       <button class="button is-small is-light" id="policy-aware-prev" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-left">
+         </i>
+        </span>
+       </button>
+      </div>
+      <div class="control">
+       <input class="input is-small" id="policy-aware-page-input" min="1" placeholder="Page #" type="number"/>
+      </div>
+      <div class="control">
+       <div class="select is-small">
+        <select id="policy-aware-sequence-select">
+        </select>
+       </div>
+      </div>
+      <div class="control">
+       <button class="button is-small is-light" id="policy-aware-next" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-right">
+         </i>
+        </span>
+       </button>
+      </div>
+     </div>
+    </div>
 <div class="columns is-multiline is-variable is-4" id="policy-aware-grid">
 <div class="column is-full policy-aware-card" data-card-index="0" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 27 indoor walk off mvs
+        27 indoor walk off mvs
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -816,9 +875,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/27_indoor_walk_off_mvs/27_indoor_walk_off_mvs.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: 27 indoor walk off mvs">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/27_indoor_walk_off_mvs/27_indoor_walk_off_mvs.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: 27 indoor walk off mvs">
 </iframe>
 </div>
 </div>
@@ -827,7 +886,7 @@
 <div class="column is-full policy-aware-card" data-card-index="1" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 56 outdoor stairs up down
+        56 outdoor stairs up down
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -846,9 +905,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/56_outdoor_stairs_up_down/56_outdoor_stairs_up_down.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: 56 outdoor stairs up down">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/56_outdoor_stairs_up_down/56_outdoor_stairs_up_down.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: 56 outdoor stairs up down">
 </iframe>
 </div>
 </div>
@@ -857,7 +916,7 @@
 <div class="column is-full policy-aware-card" data-card-index="2" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 61 outdoor sit lie walk
+        61 outdoor sit lie walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -876,9 +935,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/61_outdoor_sit_lie_walk/61_outdoor_sit_lie_walk.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: 61 outdoor sit lie walk">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/61_outdoor_sit_lie_walk/61_outdoor_sit_lie_walk.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: 61 outdoor sit lie walk">
 </iframe>
 </div>
 </div>
@@ -887,7 +946,7 @@
 <div class="column is-full policy-aware-card" data-card-index="3" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 77 outdoor stairs up
+        77 outdoor stairs up
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -906,9 +965,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/77_outdoor_stairs_up/77_outdoor_stairs_up.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: 77 outdoor stairs up">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/77_outdoor_stairs_up/77_outdoor_stairs_up.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: 77 outdoor stairs up">
 </iframe>
 </div>
 </div>
@@ -917,7 +976,7 @@
 <div class="column is-full policy-aware-card" data-card-index="4" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: MPH11
+        MPH11
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -936,9 +995,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/MPH11/MPH11.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: MPH11">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/MPH11/MPH11.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: MPH11">
 </iframe>
 </div>
 </div>
@@ -947,7 +1006,7 @@
 <div class="column is-full policy-aware-card" data-card-index="5" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: MPH16
+        MPH16
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -966,9 +1025,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/MPH16/MPH16.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: MPH16">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/MPH16/MPH16.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: MPH16">
 </iframe>
 </div>
 </div>
@@ -977,7 +1036,7 @@
 <div class="column is-full policy-aware-card" data-card-index="6" data-dataset="policy">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: Werkraum
+        Werkraum
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -997,9 +1056,9 @@
 </div>
 <div class="column is-12-tablet is-one-third-desktop">
 <p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #e67e22;">
-          Policy-aware
+          Scene-aware
          </p>
-<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/Werkraum/Werkraum.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Policy-aware demo: Werkraum">
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/post_asset_ours_11160910/Werkraum/Werkraum.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Scene-aware demo: Werkraum">
 </iframe>
 </div>
 </div>
@@ -1017,10 +1076,10 @@
      Inspect VideoMimic reconstructions next to CRISP and the original footage. Each card shows the input video alongside
       both interactive viewers for direct comparison.
     </p>
-<div class="box has-text-centered" style="margin-bottom: 2rem;">
-<div class="buttons is-centered is-flex-wrap-wrap" id="interactive-comparison-dataset-buttons" style="gap: 0.5rem;">
-</div>
-<p class="is-size-5 is-size-6-mobile">
+    <div class="box has-text-centered" style="margin-bottom: 2rem;">
+     <div class="buttons is-centered is-flex-wrap-wrap" id="interactive-comparison-dataset-buttons" style="gap: 0.5rem;">
+     </div>
+     <p class="is-size-5 is-size-6-mobile">
       Page
       <span id="interactive-comparison-page-number">
        1
@@ -1029,14 +1088,40 @@
       <span id="interactive-comparison-total-pages">
        1
       </span>
-</p>
-<input class="slider is-fullwidth" id="interactive-comparison-slider" max="1" min="1" step="1" style="margin-top: 0.5rem;" type="range" value="1"/>
-</div>
+     </p>
+     <div class="field is-grouped is-justify-content-center is-align-items-center" id="interactive-comparison-page-controls" style="gap: 0.5rem;">
+      <div class="control">
+       <button class="button is-small is-light" id="interactive-comparison-prev" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-left">
+         </i>
+        </span>
+       </button>
+      </div>
+      <div class="control">
+       <input class="input is-small" id="interactive-comparison-page-input" min="1" placeholder="Page #" type="number"/>
+      </div>
+      <div class="control">
+       <div class="select is-small">
+        <select id="interactive-comparison-sequence-select">
+        </select>
+       </div>
+      </div>
+      <div class="control">
+       <button class="button is-small is-light" id="interactive-comparison-next" type="button">
+        <span class="icon is-small">
+         <i class="fas fa-chevron-right">
+         </i>
+        </span>
+       </button>
+      </div>
+     </div>
+    </div>
 <div class="columns is-multiline is-variable is-4" id="interactive-comparison-grid">
 <div class="column is-full interactive-comparison-card" data-card-index="0" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 09 outdoor walk
+        09 outdoor walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1066,7 +1151,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="1" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 19 indoor walk off mvs
+        19 indoor walk off mvs
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1096,7 +1181,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="2" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 27 indoor walk off mvs
+        27 indoor walk off mvs
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1126,7 +1211,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="3" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 35 indoor walk
+        35 indoor walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1156,7 +1241,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="4" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 36 outdoor long walk
+        36 outdoor long walk
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1186,7 +1271,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="5" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 40 indoor walk big circle
+        40 indoor walk big circle
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1216,7 +1301,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="6" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 48 outdoor walk downhill
+        48 outdoor walk downhill
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1246,7 +1331,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="7" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 56 outdoor stairs up down
+        56 outdoor stairs up down
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1276,7 +1361,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="8" data-dataset="emdb">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: 58 outdoor parcours
+        58 outdoor parcours
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1306,7 +1391,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="9" data-dataset="prox">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: MPH11
+        MPH11
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1336,7 +1421,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="10" data-dataset="prox">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: MPH16
+        MPH16
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1366,7 +1451,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="11" data-dataset="prox">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: N3 Office
+        N3 Office
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1396,7 +1481,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="12" data-dataset="wild">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: PKR c
+        PKR c
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1425,7 +1510,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="13" data-dataset="wild">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: PKR b
+        PKR b
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1455,7 +1540,7 @@
 <div class="column is-full interactive-comparison-card" data-card-index="14" data-dataset="wild">
 <div class="box">
 <h3 class="title is-4 is-size-5-mobile has-text-centered">
-        Scene: PKR 5
+        PKR 5
        </h3>
 <div class="columns is-variable is-3 is-multiline">
 <div class="column is-12-tablet is-one-third-desktop">
@@ -1477,6 +1562,30 @@
           VideoMimic
          </p>
 <iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/vmm_recodings/0920_pkr_5_videomimic.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="VideoMimic interactive demo: PKR 5">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="column is-full interactive-demo-card" data-card-index="24" data-dataset="wild">
+<div class="box">
+<h3 class="title is-5 is-size-6-mobile has-text-centered">
+        Soraiii
+       </h3>
+<div class="columns is-variable is-3 is-multiline">
+<div class="column is-12-tablet is-half-desktop">
+<p class="has-text-centered has-text-weight-semibold is-size-6">
+          Input Video
+         </p>
+<div class="notification is-dark has-text-centered" style="min-height: 240px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+          Video coming soon
+         </div>
+</div>
+<div class="column is-12-tablet is-half-desktop">
+<p class="has-text-centered has-text-weight-semibold is-size-6" style="color: #1abc9c;">
+          Interactive (ours)
+         </p>
+<iframe allowfullscreen="" loading="lazy" src="https://crisp-real-to-sim.github.io/ViserHolder/viser-client/?playbackPath=https://crisp-real-to-sim.github.io/ViserHolder/recordings/soraiii.viser" style="width: 100%; border: none; border-radius: 10px; background-color: #000;" title="Interactive demo: Soraiii">
 </iframe>
 </div>
 </div>
@@ -1526,11 +1635,14 @@
 
    function initInteractiveGallery(prefix, pageSize, onPageChange) {
     const cards = Array.from(document.querySelectorAll(`.${prefix}-card`));
-    const slider = document.getElementById(`${prefix}-slider`);
     const pageNumber = document.getElementById(`${prefix}-page-number`);
     const totalPagesLabel = document.getElementById(`${prefix}-total-pages`);
     const buttonsContainer = document.getElementById(`${prefix}-dataset-buttons`);
-    if (!cards.length || !slider || !pageNumber || !totalPagesLabel) {
+    const pageInput = document.getElementById(`${prefix}-page-input`);
+    const sequenceSelect = document.getElementById(`${prefix}-sequence-select`);
+    const prevButton = document.getElementById(`${prefix}-prev`);
+    const nextButton = document.getElementById(`${prefix}-next`);
+    if (!cards.length || !pageNumber || !totalPagesLabel) {
      return;
     }
 
@@ -1612,6 +1724,47 @@
      });
     };
 
+    const buildSequenceOptions = () => {
+     if (!sequenceSelect && !pageInput) {
+      return;
+     }
+     const datasetCards = datasetEntries[activeDataset] || [];
+     if (sequenceSelect) {
+      sequenceSelect.innerHTML = '';
+      datasetCards.forEach((card, idx) => {
+       const option = document.createElement('option');
+       const title = (card.querySelector('h3') || { textContent: `Entry ${idx + 1}` }).textContent.trim();
+       option.value = String(idx + 1);
+       option.textContent = `Page ${idx + 1} – ${title}`;
+       sequenceSelect.appendChild(option);
+      });
+     }
+     if (pageInput) {
+      if (datasetCards.length) {
+       pageInput.min = '1';
+       pageInput.max = String(datasetCards.length);
+      } else {
+       pageInput.removeAttribute('min');
+       pageInput.removeAttribute('max');
+      }
+     }
+    };
+
+    const updateNavButtons = () => {
+     if (!prevButton && !nextButton) {
+      return;
+     }
+     const datasetInfo = datasetPages[activeDataset];
+     const total = datasetInfo ? datasetInfo.total : 1;
+     const current = datasetInfo ? datasetInfo.current : 1;
+     if (prevButton) {
+      prevButton.disabled = current <= 1 || total <= 1;
+     }
+     if (nextButton) {
+      nextButton.disabled = current >= total || total <= 1;
+     }
+    };
+
     const showPage = (page) => {
      if (!activeDataset) {
       return;
@@ -1634,8 +1787,14 @@
      });
      pageNumber.textContent = safePage;
      totalPagesLabel.textContent = totalPages;
-     slider.value = safePage;
+     if (sequenceSelect) {
+      sequenceSelect.value = String(safePage);
+     }
+     if (pageInput) {
+      pageInput.value = String(safePage);
+     }
      updateButtons();
+     updateNavButtons();
      if (typeof onPageChange === 'function') {
       requestAnimationFrame(onPageChange);
      }
@@ -1643,27 +1802,61 @@
 
     const setActiveDataset = (dataset) => {
      if (!datasetEntries[dataset] || !datasetEntries[dataset].length) {
-      return;
+     return;
      }
      activeDataset = dataset;
      const info = datasetPages[dataset];
      if (info) {
-      slider.max = info.total;
-      slider.min = '1';
-      slider.value = info.current;
+      buildSequenceOptions();
       totalPagesLabel.textContent = info.total;
       showPage(info.current);
      }
     };
 
-    slider.addEventListener('input', (event) => {
-     const value = Number(event.target.value);
-     showPage(value);
-    });
-    slider.addEventListener('change', (event) => {
-     const value = Number(event.target.value);
-     showPage(value);
-    });
+    const goToRelativePage = (delta) => {
+     if (!activeDataset) {
+      return;
+     }
+     const datasetInfo = datasetPages[activeDataset];
+     if (!datasetInfo) {
+      return;
+     }
+     showPage(datasetInfo.current + delta);
+    };
+
+    if (sequenceSelect) {
+     sequenceSelect.addEventListener('change', (event) => {
+      const value = Number(event.target.value);
+      if (!Number.isNaN(value)) {
+       showPage(value);
+      }
+     });
+    }
+    if (pageInput) {
+     const commitPageInput = () => {
+      const value = Number(pageInput.value);
+      if (!Number.isNaN(value)) {
+       showPage(value);
+      }
+     };
+     pageInput.addEventListener('change', commitPageInput);
+     pageInput.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+       commitPageInput();
+      }
+     });
+    }
+
+    if (prevButton) {
+     prevButton.addEventListener('click', () => {
+      goToRelativePage(-1);
+     });
+    }
+    if (nextButton) {
+     nextButton.addEventListener('click', () => {
+      goToRelativePage(1);
+     });
+    }
 
     setActiveDataset(activeDataset);
    }
@@ -1724,9 +1917,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    initInteractiveGallery('interactive-demo', 3, syncDemoHeights);
-    initInteractiveGallery('policy-aware', 2, syncPolicyHeights);
-    initInteractiveGallery('interactive-comparison', 3, syncComparisonHeights);
+    initInteractiveGallery('interactive-demo', 1, syncDemoHeights);
+    initInteractiveGallery('policy-aware', 1, syncPolicyHeights);
+    initInteractiveGallery('interactive-comparison', 1, syncComparisonHeights);
     const demoVideos = document.querySelectorAll('#interactive-demo video');
     demoVideos.forEach((video) => {
       video.addEventListener('loadedmetadata', () => {
