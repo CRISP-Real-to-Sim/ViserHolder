@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRISP FollowCam Grid</title>
+  <meta name="description" content="Ultra-dense CRISP interactive demos" />
+  <link rel="icon" type="image/svg" href="../static/images/logo.svg" />
+  <link rel="stylesheet" href="../static/css/bulma.min.css" />
+  <link rel="stylesheet" href="../static/css/index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #020617;
+      color: #e2e8f0;
+    }
+    .hero.is-link {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 60%, #1d1b4f 100%);
+      padding-bottom: 1rem;
+    }
+    .hero .title,
+    .hero .subtitle {
+      color: #f0f9ff;
+    }
+    .hero .buttons .button {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #f8fafc;
+    }
+    .hero .buttons .button:hover {
+      background-color: rgba(255, 255, 255, 0.16);
+    }
+    .followcam-section {
+      padding: 1rem 0 0;
+    }
+    .followcam-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      background-color: #020617;
+    }
+    .followcam-tile {
+      background-color: #000;
+    }
+    .followcam-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      display: block;
+      background-color: #000;
+    }
+    @media screen and (max-width: 1400px) {
+      .followcam-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      .followcam-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .followcam-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero is-link is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p class="title is-1 is-size-3-mobile">CRISP FollowCam Wall</p>
+        <p class="subtitle is-4 is-size-6-mobile">25 interactive viewers, zero captions. Just drag everywhere.</p>
+        <div class="buttons is-centered">
+          <a class="button is-rounded" href="../index.html"><span class="icon"><i class="fas fa-arrow-left"></i></span><span>Back</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section followcam-section">
+    <div class="container is-fluid" style="padding: 0;">
+      <div class="followcam-grid" id="followcam-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <script>
+    const RECORDINGS = [
+      '0910_56_outdoor_stairs_up_down_ours.viser',
+      '0910_58_outdoor_parcours_ours.viser',
+      '0910_36_outdoor_long_walk_ours.viser',
+      '0910_09_outdoor_walk_ours.viser',
+      '0910_20_outdoor_walk_ours.viser',
+      '0910_24_outdoor_long_walk_ours.viser',
+      '0910_19_indoor_walk_off_mvs_ours.viser',
+      '0910_27_indoor_walk_off_mvs_ours.viser',
+      '0910_28_outdoor_walk_lunges_ours.viser',
+      '0910_35_indoor_walk_ours.viser',
+      '0910_40_indoor_walk_big_circle_ours.viser',
+      '0910_48_outdoor_walk_downhill_ours.viser',
+      '0921_MPH11_ours.viser',
+      '0921_MPH16_ours.viser',
+      '0921_MPH8_ours.viser',
+      'pkr_5.viser',
+      '0921_pkr_c_ours.viser',
+      '1104_pkr_grn_2_ours.viser',
+      '0921_pkr_g_ours.viser',
+      '1104_pkr_grn_1_ours.viser',
+      '1104_pkr_grn_8_ours.viser',
+      'yogaball_1.viser',
+      'pkr_b.viser',
+      '1118_sandbag_3_ours.viser',
+      'soraiii.viser'
+    ];
+
+    const FOLLOWCAM_AVAILABLE = new Set([
+      '0910_09_outdoor_walk_ours.viser',
+      '0910_19_indoor_walk_off_mvs_ours.viser',
+      '0910_20_outdoor_walk_ours.viser',
+      '0910_24_outdoor_long_walk_ours.viser',
+      '0910_27_indoor_walk_off_mvs_ours.viser',
+      '0910_28_outdoor_walk_lunges_ours.viser',
+      '0910_35_indoor_walk_ours.viser',
+      '0910_36_outdoor_long_walk_ours.viser',
+      '0910_37_outdoor_run_circle_ours.viser',
+      '0910_48_outdoor_walk_downhill_ours.viser',
+      '0910_49_outdoor_big_stairs_down_ours.viser',
+      '0910_56_outdoor_stairs_up_down_ours.viser',
+      '0910_58_outdoor_parcours_ours.viser',
+      '0910_61_outdoor_sit_lie_walk_ours.viser',
+      '0910_65_outdoor_walk_straight_ours.viser',
+      '0910_77_outdoor_stairs_up_ours.viser',
+      '0910_78_outdoor_stairs_up_down_ours.viser',
+      '0910_79_outdoor_walk_rectangle_ours.viser',
+      '0910_80_outdoor_walk_big_circle_ours.viser',
+      '0910_BasementSittingBooth_ours.viser',
+      '0910_MPH112_ours.viser',
+      '0910_MPH11_ours.viser',
+      '0910_MPH16_ours.viser',
+      '0910_MPH1Library_ours.viser',
+      '0910_MPH8_ours.viser',
+      '0910_N0SittingBooth_ours.viser',
+      '0910_N0Sofa_ours.viser',
+      '0910_N3Library_ours.viser',
+      '0910_N3Office_ours.viser',
+      '0910_N3OpenArea_ours.viser',
+      '0910_Werkraum_ours.viser',
+      '0917_pkr_5_ours.viser',
+      '0917_pkr_a_ours.viser',
+      '0917_pkr_b_ours.viser',
+      '0917_pkr_c_ours.viser',
+      '0917_pkr_g_ours.viser',
+      '0917_pkr_z_ours.viser',
+      '0917_qitao_ourdoor_4_ours.viser',
+      '0921_MPH11_ours.viser',
+      '0921_MPH16_ours.viser',
+      '0921_MPH1Library_ours.viser',
+      '0921_MPH8_ours.viser',
+      '0921_N3Office_ours.viser',
+      '0921_Werkraum_ours.viser',
+      '0921_pkr_c_ours.viser',
+      '0921_pkr_g_ours.viser',
+      '0921_qitao_ourdoor_4_ours.viser',
+      '1014_qitao_ourdoor_4_ours.viser',
+      '1104_pkr_grn_1_ours.viser',
+      '1104_pkr_grn_2_ours.viser',
+      '1104_pkr_grn_8_ours.viser'
+    ]);
+
+    const REMOTE_BASE = 'https://crisp-real-to-sim.github.io/ViserHolder';
+    function resolveRepoBase() {
+      try {
+        const guessed = new URL('..', window.location.href).href.replace(/\/$/, '');
+        if (guessed.startsWith('http')) {
+          return guessed;
+        }
+      } catch (err) {
+        console.warn('Unable to infer repo base from window.location, falling back to remote host.', err);
+      }
+      return REMOTE_BASE;
+    }
+
+    const REPO_BASE = resolveRepoBase();
+    const VIEWER_BASE = `${REPO_BASE}/viser-client/?playbackPath=`;
+
+    function resolveRecordingPath(filename) {
+      return FOLLOWCAM_AVAILABLE.has(filename)
+        ? `followcam/${filename}`
+        : `recordings/${filename}`;
+    }
+
+    function buildViewerUrl(filename) {
+      const playbackPath = `${REPO_BASE}/${resolveRecordingPath(filename)}`;
+      return `${VIEWER_BASE}${encodeURIComponent(playbackPath)}`;
+    }
+
+    function initFollowcamGrid() {
+      const grid = document.getElementById('followcam-grid');
+      if (!grid) {
+        return;
+      }
+      const fragment = document.createDocumentFragment();
+      RECORDINGS.forEach((filename, idx) => {
+        const tile = document.createElement('div');
+        tile.className = 'followcam-tile';
+        const iframe = document.createElement('iframe');
+        iframe.className = 'followcam-frame';
+        iframe.loading = 'lazy';
+        iframe.title = `Interactive viewer ${String(idx + 1).padStart(2, '0')}`;
+        iframe.src = buildViewerUrl(filename);
+        iframe.setAttribute('allowfullscreen', '');
+        tile.appendChild(iframe);
+        fragment.appendChild(tile);
+      });
+      grid.appendChild(fragment);
+    }
+
+    document.addEventListener('DOMContentLoaded', initFollowcamGrid);
+  </script>
+</body>
+</html>
