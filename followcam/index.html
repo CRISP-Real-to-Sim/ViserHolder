@@ -41,7 +41,7 @@
     }
     .followcam-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0;
       background-color: #020617;
     }
@@ -55,12 +55,6 @@
       display: block;
       background-color: #000;
     }
-    @media screen and (max-width: 1400px) {
-      .followcam-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-    }
-
     @media screen and (max-width: 1024px) {
       .followcam-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -97,13 +91,11 @@
     const RECORDINGS = [
       '0910_56_outdoor_stairs_up_down_ours.viser',
       '0910_58_outdoor_parcours_ours.viser',
-      '0910_36_outdoor_long_walk_ours.viser',
       '0910_27_indoor_walk_off_mvs_ours.viser',
       '0910_28_outdoor_walk_lunges_ours.viser',
       '0910_35_indoor_walk_ours.viser',
       '0910_48_outdoor_walk_downhill_ours.viser',
       '0921_MPH11_ours.viser',
-      '0921_MPH16_ours.viser',
       '0921_MPH8_ours.viser',
       'pkr_5.viser',
       '0921_pkr_c_ours.viser',
@@ -111,9 +103,7 @@
       '0921_pkr_g_ours.viser',
       '1104_pkr_grn_1_ours.viser',
       '1104_pkr_grn_8_ours.viser',
-      'yogaball_1.viser',
       'pkr_b.viser',
-      '1118_sandbag_3_ours.viser',
       'soraiii.viser'
     ];
 
