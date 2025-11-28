@@ -47,12 +47,26 @@
     }
     .followcam-tile {
       background-color: #000;
+      padding: 0.25rem;
     }
-    .followcam-frame {
+    .followcam-frame-wrapper {
+      position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
+      background-color: #000;
+      overflow: hidden;
+    }
+    .followcam-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       border: none;
       display: block;
+      background-color: #000;
+    }
+    .followcam-frame.video-frame {
+      object-fit: contain;
       background-color: #000;
     }
     @media screen and (max-width: 1024px) {
@@ -83,12 +97,23 @@
 
   <section class="section followcam-section">
     <div class="container is-fluid" style="padding: 0;">
+      <div class="followcam-controls has-text-centered" style="margin-bottom: 1rem;">
+        <div class="buttons is-centered" style="gap: 0.5rem;">
+          <button class="button is-small is-light" id="followcam-prev" type="button">
+            <span class="icon is-small"><i class="fas fa-chevron-left"></i></span>
+          </button>
+          <span id="followcam-page-label" class="is-size-6">Page 1 / 4</span>
+          <button class="button is-small is-light" id="followcam-next" type="button">
+            <span class="icon is-small"><i class="fas fa-chevron-right"></i></span>
+          </button>
+        </div>
+      </div>
       <div class="followcam-grid" id="followcam-grid" aria-live="polite"></div>
     </div>
   </section>
 
   <script>
-    const RECORDINGS = [
+    const PRIMARY_RECORDINGS = [
       '0910_56_outdoor_stairs_up_down_ours.viser',
       '0910_58_outdoor_parcours_ours.viser',
       '0910_27_indoor_walk_off_mvs_ours.viser',
@@ -176,6 +201,59 @@
 
     const REPO_BASE = resolveRepoBase();
     const VIEWER_BASE = `${REPO_BASE}/viser-client/?playbackPath=`;
+    const VIDEO_INPUT_BASE = `${REPO_BASE}/static/videos/video_results/interactive_comparisons`;
+    const SECOND_PAGE_RECORDINGS = [
+      '0910_09_outdoor_walk_ours.viser',
+      '0910_20_outdoor_walk_ours.viser',
+      '0910_24_outdoor_long_walk_ours.viser',
+      '0910_36_outdoor_long_walk_ours.viser',
+      '0910_49_outdoor_big_stairs_down_ours.viser',
+      '0910_61_outdoor_sit_lie_walk_ours.viser',
+      '0910_65_outdoor_walk_straight_ours.viser',
+      '0910_77_outdoor_stairs_up_ours.viser',
+      '0910_79_outdoor_walk_rectangle_ours.viser',
+      '0910_80_outdoor_walk_big_circle_ours.viser',
+      '0910_MPH11_ours.viser',
+      '0921_N3Office_ours.viser'
+    ];
+
+    const INPUT_VIDEO_PAGE_ONE = [
+      { video: '09_outdoor_walk.mp4', label: 'Outdoor walk 09' },
+      { video: '19_indoor_walk_off_mvs.mp4', label: 'Indoor walk (off MVS) 19' },
+      { video: '20_outdoor_walk.mp4', label: 'Outdoor walk 20' },
+      { video: '24_outdoor_long_walk.mp4', label: 'Outdoor long walk 24' },
+      { video: '27_indoor_walk_off_mvs.mp4', label: 'Indoor walk (off MVS) 27' },
+      { video: '28_outdoor_walk_lunges.mp4', label: 'Outdoor walk lunges' },
+      { video: '35_indoor_walk.mp4', label: 'Indoor walk 35' },
+      { video: '36_outdoor_long_walk.mp4', label: 'Outdoor long walk 36' },
+      { video: '40_indoor_walk_big_circle.mp4', label: 'Indoor walk big circle' },
+      { video: '48_outdoor_walk_downhill.mp4', label: 'Outdoor walk downhill' },
+      { video: '56_outdoor_stairs_up_down.mp4', label: 'Outdoor stairs up/down 56' },
+      { video: '58_outdoor_parcours.mp4', label: 'Outdoor parcours 58' }
+    ];
+
+    const INPUT_VIDEO_PAGE_TWO = [
+      { video: '61_outdoor_sit_lie_walk.mp4', label: 'Outdoor sit/lie/walk' },
+      { video: '77_outdoor_stairs_up.mp4', label: 'Outdoor stairs up 77' },
+      { video: 'Werkraum.mp4', label: 'Werkraum' },
+      { video: 'mph11.mp4', label: 'MPH11' },
+      { video: 'mph16.mp4', label: 'MPH16' },
+      { video: 'mph8.mp4', label: 'MPH8' },
+      { video: 'n3_office.mp4', label: 'N3 Office' },
+      { video: 'pkr_5.mp4', label: 'PKR 5' },
+      { video: 'pkr_b.mp4', label: 'PKR B' },
+      { video: 'pkr_c.mp4', label: 'PKR C' },
+      { video: 'pkr_grn_1.mp4', label: 'PKR GRN 1' },
+      { video: 'pkr_grn_8.mp4', label: 'PKR GRN 8' }
+    ];
+
+    const FOLLOWCAM_PAGES = [
+      { type: 'viewer', items: PRIMARY_RECORDINGS },
+      { type: 'viewer', items: SECOND_PAGE_RECORDINGS },
+      { type: 'video', items: INPUT_VIDEO_PAGE_ONE },
+      { type: 'video', items: INPUT_VIDEO_PAGE_TWO }
+    ];
+    let activePage = 0;
 
     function resolveRecordingPath(filename) {
       return FOLLOWCAM_AVAILABLE.has(filename)
@@ -188,25 +266,100 @@
       return `${VIEWER_BASE}${encodeURIComponent(playbackPath)}`;
     }
 
-    function initFollowcamGrid() {
+    function buildVideoUrl(filename) {
+      return `${VIDEO_INPUT_BASE}/${encodeURIComponent(filename)}`;
+    }
+
+    function createViewerTile(filename, sequenceNumber) {
+      const tile = document.createElement('div');
+      tile.className = 'followcam-tile';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'followcam-frame-wrapper';
+      const iframe = document.createElement('iframe');
+      iframe.className = 'followcam-frame';
+      iframe.loading = 'lazy';
+      iframe.title = `Interactive viewer ${String(sequenceNumber).padStart(2, '0')}`;
+      iframe.src = buildViewerUrl(filename);
+      iframe.setAttribute('allowfullscreen', '');
+      wrapper.appendChild(iframe);
+      tile.appendChild(wrapper);
+      return tile;
+    }
+
+    function createVideoTile(entry, sequenceNumber) {
+      const tile = document.createElement('div');
+      tile.className = 'followcam-tile';
+      const label = entry.label || `Viewer ${String(sequenceNumber).padStart(2, '0')}`;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'followcam-frame-wrapper';
+      const video = document.createElement('video');
+      video.className = 'followcam-frame video-frame';
+      video.controls = true;
+      video.preload = 'metadata';
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.title = `Input video ${label}`;
+      video.src = buildVideoUrl(entry.video);
+      wrapper.appendChild(video);
+      tile.appendChild(wrapper);
+      return tile;
+    }
+
+    function renderFollowcamPage(pageIndex) {
       const grid = document.getElementById('followcam-grid');
       if (!grid) {
         return;
       }
+      const page = FOLLOWCAM_PAGES[pageIndex] || { type: 'viewer', items: [] };
+      const recordings = page.items || [];
+      grid.innerHTML = '';
       const fragment = document.createDocumentFragment();
-      RECORDINGS.forEach((filename, idx) => {
-        const tile = document.createElement('div');
-        tile.className = 'followcam-tile';
-        const iframe = document.createElement('iframe');
-        iframe.className = 'followcam-frame';
-        iframe.loading = 'lazy';
-        iframe.title = `Interactive viewer ${String(idx + 1).padStart(2, '0')}`;
-        iframe.src = buildViewerUrl(filename);
-        iframe.setAttribute('allowfullscreen', '');
-        tile.appendChild(iframe);
+      const offset = FOLLOWCAM_PAGES.slice(0, pageIndex).reduce((sum, cfg) => {
+        const items = cfg.items || [];
+        return sum + items.length;
+      }, 0);
+      recordings.forEach((entry, idx) => {
+        const sequenceNumber = offset + idx + 1;
+        const tile = page.type === 'video'
+          ? createVideoTile(entry, sequenceNumber)
+          : createViewerTile(entry, sequenceNumber);
         fragment.appendChild(tile);
       });
       grid.appendChild(fragment);
+      const label = document.getElementById('followcam-page-label');
+      if (label) {
+        label.textContent = `Page ${pageIndex + 1} / ${FOLLOWCAM_PAGES.length}`;
+      }
+      const prev = document.getElementById('followcam-prev');
+      const next = document.getElementById('followcam-next');
+      if (prev) {
+        prev.disabled = pageIndex === 0;
+      }
+      if (next) {
+        next.disabled = pageIndex >= FOLLOWCAM_PAGES.length - 1;
+      }
+    }
+
+    function initFollowcamGrid() {
+      const prev = document.getElementById('followcam-prev');
+      const next = document.getElementById('followcam-next');
+      renderFollowcamPage(activePage);
+      if (prev) {
+        prev.addEventListener('click', () => {
+          if (activePage > 0) {
+            activePage -= 1;
+            renderFollowcamPage(activePage);
+          }
+        });
+      }
+      if (next) {
+        next.addEventListener('click', () => {
+          if (activePage < FOLLOWCAM_PAGES.length - 1) {
+            activePage += 1;
+            renderFollowcamPage(activePage);
+          }
+        });
+      }
     }
 
     document.addEventListener('DOMContentLoaded', initFollowcamGrid);
